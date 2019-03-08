@@ -1,0 +1,18 @@
+<p>
+  football works!
+</p>
+angle: <input type="number" [formControl]="angle">
+speed: <input type="number" [formControl]="speed">
+<button (click)="thrownBall()">Throw</button>
+<div (click)="onEvent($event)">
+<canvas #myCanvas width="1008" height="500"></canvas>
+</div>
+
+<div style="display:none;">
+  <img id="source"
+       src="https://cdn3.iconfinder.com/data/icons/american-football-2/240/american-football-player-010-512.png"
+       width="300" height="227">
+  <img id="source1"
+       src="https://static.thenounproject.com/png/589742-200.png"
+       width="300" height="227">
+</div>

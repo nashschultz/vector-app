@@ -1,0 +1,69 @@
+
+X:
+  <input type="number" [formControl]="X1">
+Y:
+  <input type="number" [formControl]="Y1">
+Z:
+  <input type="number" [formControl]="Z1">
+
+<!--<input type="button" id="vectorSubmit" value="Submit">
+-->
+<br>
+
+X: {{X1.value}} Y: {{Y1.value}} Z: {{Z1.value}}
+<br>
+
+X:
+  <input type="number" [formControl]="X2">
+Y:
+  <input type="number" [formControl]="Y2">
+Z:
+  <input type="number" [formControl]="Z2">
+
+<!--<input type="button" id="vectorSubmit2" value="Submit" onclick="addVector(); return false;">
+-->
+<br>
+
+X: {{X2.value}} Y: {{Y2.value}} Z: {{Z2.value}}
+<br>
+<br>
+Vector Addition:
+<{{addVectors(1)}} , {{addVectors(2)}} ,
+{{addVectors(3)}}>
+
+<br>
+Vector Length:
+{{getLength(1)}}
+<br>
+Vector Cross:
+<{{crossVector(1)}} , {{crossVector(2)}} , {{crossVector(3)}}>
+<br>
+Vector Dot:
+{{dotVector()}}
+<br>
+
+<label>
+  <input type="number" [formControl]="name">
+  <input type="number" [formControl]="name2">
+  {{name.value + name2.value}}
+</label>
+
+<br>
+
+X:
+<input type="number" [formControl]="vectorX">
+Y:
+<input type="number" [formControl]="vectorY">
+Z:
+<input type="number" [formControl]="vectorZ">
+
+<button type="button" (click)="addVector()">Add</button>
+<button type="button" (click)="getCross()">Cross</button>
+
+<div>
+  <p *ngFor="let vector of vectorService.vectors">{{vector[0]}} {{vector[1]}} {{vector[2]}}</p>
+</div>
+
+<div>
+  <p *ngFor="let vector of vectorService.crossVectors">{{vector[0]}} {{vector[1]}} {{vector[2]}}</p>
+</div>

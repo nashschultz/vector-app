@@ -1,0 +1,22 @@
+
+<label>
+<input type="number" [formControl]="X1">X + <input type="number" [formControl]="Y1">Y +
+<input type="number" [formControl]="Z1">Z = <input type="number" [formControl]="A1">
+<br>
+<input type="number" [formControl]="X2">X + <input type="number" [formControl]="Y2">Y +
+<input type="number" [formControl]="Z2">Z = <input type="number" [formControl]="A2">
+<br>
+<input type="number" [formControl]="X3">X + <input type="number" [formControl]="Y3">Y +
+<input type="number" [formControl]="Z3">Z = <input type="number" [formControl]="A3">
+<br>
+<button type="button" (click)="solveEquation()">Solve Equation</button>
+  <br>
+  X: {{solved[0]}}
+  <br>
+  Y: {{solved[1]}}
+  <br>
+  Z: {{solved[2]}}
+
+ <br>
+  {{answer}}
+</label>

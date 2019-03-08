@@ -1,0 +1,32 @@
+<p>
+  graph works!
+</p>
+
+<div (mouseenter)="toggle()" (mouseleave)="toggle()" [@moveAway]="isMoved ? 'start' : 'end'" class='start-end-container'>
+
+</div>
+<br>
+<br>
+<button (click)="toggle()">Change Size</button>
+<div ng-app="vector-app" ng-controller="myCtrl">
+y = <input type="number" [formControl]="mValue">x +
+  <input type="number" [formControl]="intValue">
+<button (click)="createGraph(1)">Create</button> <button (click)="getIntersection()">Intersection</button>
+  <br>
+  y = (<input type="number" [formControl]="xValue">x + <input type="number" [formControl]="horizontalMove">)^<input type="number" [formControl]="xPonent"> +
+  <input type="number" [formControl]="verticalMove">
+  <button (click)="createGraph(2)">Create</button>
+<!--<div id="chartContainer" style="height: 370px; width: 50%; margin-left:auto;margin-right:auto;"></div>
+-->
+
+  <br>
+  Graph Vectors
+  ( <input type="number" [formControl]="vectorX"> , <input type="number" [formControl]="vectorY"> )
+  <button (click)="createGraph(3)">Create</button>
+  <button (click)="createGraph(4)">Add To</button>
+
+<br>
+<br>
+<div (mousemove)="onEvent($event)">
+<canvas #myCanvas width="500" height="500"></canvas>
+</div>
