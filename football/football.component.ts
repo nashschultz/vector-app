@@ -20,6 +20,9 @@ export class FootballComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.drawField();
+  }
+  drawField() {
     const ctx: CanvasRenderingContext2D =
       this.canvasRef.nativeElement.getContext('2d');
     /*ctx.beginPath();
@@ -31,7 +34,18 @@ export class FootballComponent implements OnInit {
     ctx.fillStyle = 'green';
     // ctx.stroke();
     ctx.fill(); */
+    ctx.clearRect(0, 0, 1008, 500); // clear canvas
     ctx.beginPath();
+    ctx.fillStyle = 'skyblue';
+    ctx.fillRect(0,0,1008, 395);
+    const cloud = document.getElementById('cloud');
+    let time = new Date();
+    ctx.drawImage(cloud, 2 * time.getSeconds(), 50, 240, 160);
+    ctx.drawImage(cloud, 500, 10, 180, 120);
+    ctx.drawImage(cloud, 700, 60, 340, 200);
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(0, 395, 1008, 105);
+    ctx.fillStyle = 'black';
     ctx.lineWidth = 3;
     ctx.moveTo(0,495);
     ctx.lineTo(978, 495);
@@ -51,8 +65,10 @@ export class FootballComponent implements OnInit {
       ctx.lineTo((i*81.5)/2 + 30, 395);
       ctx.lineTo(((i+1)*81.5)/2 + 30, 395);
       ctx.lineTo((i+1)*81.5/2, 495);
-      if (i === 0 || i === 23 || i === 1 || i === 22) {
+      if (i === 0 || i === 1) {
         ctx.fillStyle = '#00770b';
+      } else if (i === 22 || i === 23) {
+        ctx.fillStyle = '#00aa0f';
       } else {
         if (i % 2 === 0) {
           ctx.fillStyle = '#00aa0f';
@@ -89,7 +105,13 @@ export class FootballComponent implements OnInit {
     ctx.fillStyle='white';
     //ctx.rotate(180 * Math.PI / 180);
     ctx.fillText('ZONE',140, -1025);
+    ctx.strokeStyle = 'yellow';
+    const goalpost = document.getElementById('post');
+    ctx.drawImage(goalpost, -5, 390, 30, 70);
+    ctx.drawImage(goalpost, 975, 390, 30, 70);
+    ctx.stroke();
     ctx.save();
+    // window.requestAnimationFrame(this.drawField());
   }
   thrownBall() {
     const ctx: CanvasRenderingContext2D =
@@ -99,7 +121,7 @@ export class FootballComponent implements OnInit {
     const image = document.getElementById('source');
     const image1 = document.getElementById('source1');
     ctx.fillStyle = 'black';
-    ctx.drawImage(image, this.clientX - 8, this.clientY - 8, 20, 20);
+    ctx.drawImage(image, this.clientX - 8, this.clientY - 8, 10, 20);
     ctx.save();
     const yards = this.clientX/8.15 - 10;
     console.log(yards);
@@ -115,7 +137,8 @@ export class FootballComponent implements OnInit {
   getVariables(angle, velocity) {
     // change of y = 1/2at^2 + Vot
     const gravity = -9.81;
-    const changeY = -1.8288;
+    // const changeY = -1.8288;
+    const changeY = 0;
     const velocityY = velocity * Math.sin(angle * (Math.PI / 180));
     const velocityX = velocity * Math.cos(angle * (Math.PI / 180));
     const time1 = (-velocityY + Math.sqrt(Math.pow(velocityY, 2) + 2*gravity*changeY))/gravity;
